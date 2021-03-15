@@ -54,7 +54,17 @@ function App() {
   }
   //handlechange
   const handleBlur = (event) => {
-    console.log(event.target.name,event.target.value);
+    console.log(event.target.name, event.target.value);
+    if (event.target.name === "email") {
+      const isEmailvalid = /\S+@\S+\.\S+/.test(event.target.value);
+      console.log(isEmailvalid);
+    }
+    if (event.target.name === "password") {
+      const isPasswordValid = event.target.value.length > 6;
+      const passwordHasNumber = /\d{1}/.test(event.target.value); 
+      console.log(isPasswordValid && passwordHasNumber);
+
+    }
     //console.log();
   }
   //handlesubmit
@@ -82,7 +92,7 @@ function App() {
       <form onSubmit={handleSubmit} >
 
         email : <input type="text" name="email" onBlur={handleBlur} placeholder="Enter your mail" required /> <br />
-      Password :<input type="password" name="password" onBlur={handleBlur} placeholder="Enter your Pass" required  id="" /> <br />
+      Password :<input type="password" name="password" onBlur={handleBlur} placeholder="Enter your Pass" required id="" /> <br />
         <input type="submit" value="submit" />
 
       </form>
